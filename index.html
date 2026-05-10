@@ -39,10 +39,10 @@
   "priceRange": "₹₹",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Navyug Market, Patel Nagar",
+    "streetAddress": "R-12/28, Raj Nagar",
     "addressLocality": "Ghaziabad",
     "addressRegion": "Uttar Pradesh",
-    "postalCode": "201001",
+    "postalCode": "201002",
     "addressCountry": "IN"
   },
   "areaServed": ["Ghaziabad", "Noida", "Delhi NCR", "Meerut"],
@@ -70,7 +70,8 @@
     }
   ],
   "openingHoursSpecification": [
-    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "10:00", "closes": "20:00"}
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "09:00", "closes": "14:00"},
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Friday","Saturday"], "opens": "18:00", "closes": "20:00"}
   ]
 }
 </script>
@@ -83,7 +84,7 @@
   "mainEntity": [
     {"@type":"Question","name":"Who is the best pediatrician in Ghaziabad?","acceptedAnswer":{"@type":"Answer","text":"Dr. Ashish Prakash is among the most experienced pediatricians and neonatologists in Ghaziabad. He trained at AIIMS New Delhi and Westmead Hospital, Sydney, with over 30 years of experience caring for newborns and children."}},
     {"@type":"Question","name":"Who is the best gynaecologist in Ghaziabad for laparoscopic surgery?","acceptedAnswer":{"@type":"Answer","text":"Dr. Neera Bhan is a senior gynaecologist and obstetrician based in Ghaziabad, specialising in laparoscopic and endoscopic gynae surgery, hysteroscopy, infertility and high-risk pregnancy. She is a Fellow of the Royal College of Obstetricians and Gynaecologists, London (FRCOG)."}},
-    {"@type":"Question","name":"How do I book an appointment at Gynae Pedia?","acceptedAnswer":{"@type":"Answer","text":"Call or WhatsApp 9560517234. The clinic is located in Ghaziabad and serves patients from across the Delhi NCR region."}},
+    {"@type":"Question","name":"How do I book an appointment at Gynae Pedia?","acceptedAnswer":{"@type":"Answer","text":"Call or WhatsApp 9560517234. The clinic is at R-12/28, Raj Nagar, Ghaziabad and serves patients from across the Delhi NCR region."}},
     {"@type":"Question","name":"Does the clinic offer childhood vaccinations?","acceptedAnswer":{"@type":"Answer","text":"Yes. Dr. Ashish Prakash offers the full IAP-recommended vaccination schedule for newborns, infants and children up to adolescence."}},
     {"@type":"Question","name":"Does Dr. Neera Bhan treat menopause and PCOS?","acceptedAnswer":{"@type":"Answer","text":"Yes. Menopause management, PCOS/PCOD, perimenopause, abnormal uterine bleeding and hormonal care are core areas of her practice."}}
   ]
@@ -901,6 +902,52 @@
   /* fade in */
   .reveal { opacity: 0; transform: translateY(16px); transition: opacity .8s ease, transform .8s ease; }
   .reveal.in { opacity: 1; transform: none; }
+
+  /* map open card */
+  .map-open-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-height: 380px;
+    text-decoration: none;
+    color: var(--ivory);
+    gap: 18px;
+    padding: 40px 32px;
+    transition: background .25s;
+  }
+  .map-open-card:hover { background: rgba(255,255,255,.04); }
+  .map-open-address {
+    text-align: center;
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--ivory);
+  }
+  .map-open-address div:last-child {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: rgba(245,239,228,.55);
+    margin-top: 4px;
+  }
+  .map-open-cta {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: rgba(245,239,228,.5);
+    border: 1px solid rgba(245,239,228,.2);
+    padding: 10px 22px;
+    border-radius: 999px;
+    margin-top: 8px;
+    transition: all .2s;
+  }
+  .map-open-card:hover .map-open-cta {
+    color: var(--ivory);
+    border-color: rgba(245,239,228,.5);
+  }
 </style>
 </head>
 <body>
@@ -909,8 +956,7 @@
 <nav class="nav">
   <div class="nav-inner">
     <a class="brand" href="#top" aria-label="Gynae Pedia home">
-      <span class="brand-mark"><span>G</span></span>
-      <span>Gynae<em style="font-style:italic;font-weight:400;color:var(--terracotta);">·</em>Pedia</span>
+      <img src="gynaepedia-icon.jpg" alt="Gynae Pedia" style="height:30px;width:auto;" />
     </a>
     <div class="nav-links">
       <a href="#dr-ashish">Dr. Ashish Prakash</a>
@@ -977,6 +1023,7 @@
     <span>Westmead Hospital, Sydney</span>
     <span>Lady Hardinge Medical College</span>
     <span>Royal Alexandra Hospital for Children</span>
+    <span>Ex Senior Consultants at Fortis Noida</span>
     <span>30+ Years of Practice</span>
     <span>NICU · Neonatology · Laparoscopic Surgery</span>
     <span>AIIMS New Delhi</span>
@@ -984,6 +1031,7 @@
     <span>Westmead Hospital, Sydney</span>
     <span>Lady Hardinge Medical College</span>
     <span>Royal Alexandra Hospital for Children</span>
+    <span>Ex Senior Consultants at Fortis Noida</span>
     <span>30+ Years of Practice</span>
     <span>NICU · Neonatology · Laparoscopic Surgery</span>
   </div>
@@ -998,42 +1046,14 @@
 
   <article class="doctor reveal">
     <div class="doctor-portrait">
-      <div class="portrait-card">
-        <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <defs>
-            <linearGradient id="ag" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#3a5e4f"/>
-              <stop offset="100%" stop-color="#1f3329"/>
-            </linearGradient>
-            <pattern id="dots-a" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse">
-              <circle cx="3" cy="3" r="1" fill="rgba(245,239,228,0.18)"/>
-            </pattern>
-          </defs>
-          <rect width="400" height="500" fill="url(#ag)"/>
-          <rect width="400" height="500" fill="url(#dots-a)"/>
-          <!-- Stylized parent + child silhouette -->
-          <g transform="translate(200 240)" fill="none" stroke="#f5efe4" stroke-width="2.5" opacity="0.95" stroke-linecap="round" stroke-linejoin="round">
-            <!-- adult head -->
-            <circle cx="-30" cy="-90" r="34"/>
-            <!-- adult shoulders/body -->
-            <path d="M -90 0 Q -90 -50 -30 -50 Q 30 -50 30 0 L 30 80 L -90 80 Z"/>
-            <!-- child held -->
-            <circle cx="55" cy="-20" r="22"/>
-            <path d="M 28 10 Q 28 -10 55 -10 Q 82 -10 82 10 L 82 50 L 28 50 Z"/>
-            <!-- subtle heart between -->
-            <path d="M 0 -20 c -4 -8 -16 -8 -16 2 c 0 8 16 18 16 18 c 0 0 16 -10 16 -18 c 0 -10 -12 -10 -16 -2 z" fill="#c2502c" stroke="none" opacity="0.85"/>
-          </g>
-        </svg>
-        <div class="pc-tag">Pediatrics &amp; Neonatology</div>
-        <div class="pc-name"><small>Senior Consultant</small>Dr. Ashish<br/><em>Prakash</em></div>
-      </div>
+      <img src="dr-ashish.png" alt="Dr. Ashish Prakash — Pediatrician &amp; Neonatologist, Ghaziabad" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" />
     </div>
 
     <div class="doctor-body">
       <div class="role">MBBS · MD Pediatrics · DNB · AIIMS</div>
       <h3>Dr. Ashish Prakash</h3>
       <p>
-        A <strong>pediatrician and neonatologist</strong> with over <strong>30 years of practice</strong>, Dr. Ashish Prakash is among the most-respected child specialists in Ghaziabad and the Delhi NCR. He completed his MBBS and MD from <strong>AIIMS, New Delhi</strong>, then trained in advanced neonatology at the <strong>Children's Hospital at Westmead</strong> and <strong>Royal Alexandra Hospital for Children</strong> in Sydney, Australia.
+        A <strong>pediatrician and neonatologist</strong> with over <strong>30 years of practice</strong>, Dr. Ashish Prakash is among the most-respected child specialists in Ghaziabad and the Delhi NCR. He completed his MBBS and MD from <strong>AIIMS, New Delhi</strong>. Before his Australian fellowship, he served as <strong>Senior Resident at Mowasat Hospital, Kuwait</strong> (1992–93), then trained in advanced neonatology at the <strong>Children's Hospital at Westmead</strong> and <strong>Royal Alexandra Hospital for Children</strong> in Sydney (1993–97).
       </p>
       <p>
         He set up the first <strong>Level III Neonatal Unit</strong> in western Uttar Pradesh — bringing ventilation, surfactant therapy, and parenteral nutrition for premature babies to Ghaziabad, so families no longer needed to be referred to Delhi. Today he is <strong>Senior Consultant and Head of Neonatology at Yashoda Super Speciality Hospitals</strong>, and leads care for newborns, premature babies, and children up to adolescence.
@@ -1043,8 +1063,9 @@
         <li><span class="y">2002 — Today</span><span class="d">Senior Consultant &amp; Head of Neonatology<em>Yashoda Super Speciality Hospitals, Ghaziabad</em></span></li>
         <li><span class="y">2007 — 2011</span><span class="d">Head of Neonatology<em>Fortis Hospital, Noida</em></span></li>
         <li><span class="y">2006 — 2016</span><span class="d">Professor &amp; Head of Department of Pediatrics<em>Subharti University, Meerut</em></span></li>
-        <li><span class="y">1995 — 1997</span><span class="d">Senior Registrar, Neonatology<em>Westmead Hospital &amp; Royal Alexandra Hospital for Children, Sydney</em></span></li>
-        <li><span class="y">1988 — 1991</span><span class="d">MD, Pediatrics Residency<em>All India Institute of Medical Sciences (AIIMS), New Delhi</em></span></li>
+        <li><span class="y">1993 — 1997</span><span class="d">Senior Registrar, Neonatology<em>Children's Hospital at Westmead &amp; Royal Alexandra Hospital for Children, Sydney, Australia</em></span></li>
+        <li><span class="y">1992 — 1993</span><span class="d">Senior Resident<em>Mowasat Hospital, Kuwait</em></span></li>
+        <li><span class="y">1988 — 1991</span><span class="d">MD, Pediatrics<em>All India Institute of Medical Sciences (AIIMS), New Delhi</em></span></li>
         <li><span class="y">1982 — 1987</span><span class="d">MBBS<em>All India Institute of Medical Sciences (AIIMS), New Delhi</em></span></li>
       </ul>
 
@@ -1082,48 +1103,17 @@
 
   <article class="doctor reveal">
     <div class="doctor-portrait">
-      <div class="portrait-card terra">
-        <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <defs>
-            <linearGradient id="ng" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#d96541"/>
-              <stop offset="100%" stop-color="#7a2c14"/>
-            </linearGradient>
-            <pattern id="dots-n" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse">
-              <circle cx="3" cy="3" r="1" fill="rgba(245,239,228,0.2)"/>
-            </pattern>
-          </defs>
-          <rect width="400" height="500" fill="url(#ng)"/>
-          <rect width="400" height="500" fill="url(#dots-n)"/>
-          <!-- abstract bloom -->
-          <g transform="translate(200 250)" stroke="#f5efe4" stroke-width="2" fill="none" opacity="0.9" stroke-linecap="round">
-            <circle cx="0" cy="0" r="28" fill="rgba(245,239,228,0.15)"/>
-            <g>
-              <ellipse cx="0" cy="-60" rx="20" ry="50"/>
-              <ellipse cx="0" cy="60" rx="20" ry="50"/>
-              <ellipse cx="-60" cy="0" rx="50" ry="20"/>
-              <ellipse cx="60" cy="0" rx="50" ry="20"/>
-              <ellipse cx="-42" cy="-42" rx="20" ry="50" transform="rotate(45 -42 -42)"/>
-              <ellipse cx="42" cy="-42" rx="20" ry="50" transform="rotate(-45 42 -42)"/>
-              <ellipse cx="-42" cy="42" rx="20" ry="50" transform="rotate(-45 -42 42)"/>
-              <ellipse cx="42" cy="42" rx="20" ry="50" transform="rotate(45 42 42)"/>
-            </g>
-            <circle cx="0" cy="0" r="10" fill="#f5efe4" stroke="none"/>
-          </g>
-        </svg>
-        <div class="pc-tag">Obstetrics &amp; Gynaecology</div>
-        <div class="pc-name"><small>Senior Consultant · FRCOG</small>Dr. Neera<br/><em>Bhan</em></div>
-      </div>
+      <img src="dr-neera.png" alt="Dr. Neera Bhan — Gynaecologist, Obstetrician &amp; Laparoscopic Surgeon, Ghaziabad" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" />
     </div>
 
     <div class="doctor-body">
       <div class="role">MBBS · MD · FRCOG (London)</div>
       <h3>Dr. Neera Bhan</h3>
       <p>
-        Dr. Neera Bhan is a senior <strong>gynaecologist, obstetrician and laparoscopic surgeon</strong> with three decades of practice across <strong>the United Kingdom, Australia, Kuwait and India</strong>. She completed her MBBS and MD from <strong>Lady Hardinge Medical College, New Delhi</strong>, and is a <strong>Fellow of the Royal College of Obstetricians and Gynaecologists, London (FRCOG)</strong>.
+        Dr. Neera Bhan is a senior <strong>gynaecologist, obstetrician and laparoscopic surgeon</strong> with three decades of practice across <strong>Kuwait, Australia, the United Kingdom and India</strong>. She completed her MBBS and MD in Obstetrics &amp; Gynaecology from <strong>Lady Hardinge Medical College, New Delhi</strong>. She received her <strong>MRCOG</strong> from the Royal College of Obstetricians and Gynaecologists, London in 2007, and her <strong>Fellowship (FRCOG)</strong> in 2019.
       </p>
       <p>
-        Her surgical training is exceptional: advanced <strong>laparoscopic gynaecological surgery</strong> under Dr. Roger Fay (an Australian pioneer in the field), and dedicated training in <strong>endoscopic surgery in France</strong>. She has consulted at Nepean Hospital, Sydney; Mowasat Hospital, Kuwait; and as Senior Consultant and Director at hospitals across the Delhi NCR. Today she practices in Ghaziabad — handling everything from routine antenatal care to complex high-risk pregnancies and minimally-invasive gynae surgery.
+        Her surgical training is exceptional: she holds a <strong>Diploma in Advanced Laparoscopic Surgery from France</strong>, and trained under Dr. Roger Fay, an Australian pioneer in laparoscopic gynaecology. She served as <strong>Senior Resident at Mowasat Hospital, Kuwait</strong> (1992–93) and <strong>Senior Registrar in Obstetrics &amp; Gynaecology at Nepean Hospital, Sydney</strong> (1993–97). Back in India, she was Professor at Santosh Hospital (1997–2005), Senior Consultant at <strong>Fortis Hospital, Noida</strong> (2007–2017), and Senior Consultant at <strong>Columbia Asia / Manipal Hospital, Ghaziabad</strong> (2017–2024).
       </p>
       <p>
         She also runs a popular YouTube channel, <strong>Gynae Pedia</strong>, dedicated to women's health awareness — explaining periods, PCOS, menopause, fertility and surgery in clear, accessible language for tens of thousands of viewers.
@@ -1131,11 +1121,16 @@
 
       <ul class="quals">
         <li><span class="y">Today</span><span class="d">Senior Consultant, Obstetrics &amp; Gynaecology<em>Practising in Ghaziabad · Delhi NCR</em></span></li>
-        <li><span class="y">Past</span><span class="d">Senior Consultant &amp; Director<em>Columbia Asia / Manipal Hospital, Ghaziabad · Fortis Hospital, Noida</em></span></li>
-        <li><span class="y">Sydney</span><span class="d">Senior Consultant<em>Nepean Hospital, Australia</em></span></li>
-        <li><span class="y">Kuwait</span><span class="d">Senior Resident<em>Mowasat Hospital, Kuwait</em></span></li>
-        <li><span class="y">London</span><span class="d">Fellow of the Royal College of Obstetricians &amp; Gynaecologists<em>FRCOG — London, United Kingdom</em></span></li>
-        <li><span class="y">Delhi</span><span class="d">MBBS &amp; MD, Obstetrics &amp; Gynaecology<em>Lady Hardinge Medical College, University of Delhi</em></span></li>
+        <li><span class="y">2017 — 2024</span><span class="d">Senior Consultant<em>Columbia Asia / Manipal Hospital, Ghaziabad</em></span></li>
+        <li><span class="y">2019</span><span class="d">Fellow of the Royal College of Obstetricians &amp; Gynaecologists<em>FRCOG — Royal College, London, United Kingdom</em></span></li>
+        <li><span class="y">2007 — 2017</span><span class="d">Senior Consultant<em>Fortis Hospital, Noida</em></span></li>
+        <li><span class="y">2007</span><span class="d">Membership, Royal College of Obstetricians &amp; Gynaecologists<em>MRCOG — London, United Kingdom</em></span></li>
+        <li><span class="y">France</span><span class="d">Diploma in Advanced Laparoscopic Surgery<em>Endoscopic &amp; Laparoscopic Surgery Training, France</em></span></li>
+        <li><span class="y">1997 — 2005</span><span class="d">Professor, Obstetrics &amp; Gynaecology<em>Santosh Hospital, Ghaziabad</em></span></li>
+        <li><span class="y">1993 — 1997</span><span class="d">Senior Registrar, Obstetrics &amp; Gynaecology<em>Nepean Hospital, Sydney, Australia</em></span></li>
+        <li><span class="y">1992 — 1993</span><span class="d">Senior Resident<em>Mowasat Hospital, Kuwait</em></span></li>
+        <li><span class="y">1988 — 1991</span><span class="d">MD, Obstetrics &amp; Gynaecology<em>Lady Hardinge Medical College, University of Delhi</em></span></li>
+        <li><span class="y">1982 — 1987</span><span class="d">MBBS<em>Lady Hardinge Medical College, University of Delhi</em></span></li>
       </ul>
 
       <div class="specialties">
@@ -1274,7 +1269,7 @@
     </details>
     <details>
       <summary>How do I book an appointment?</summary>
-      <div class="answer">Call or WhatsApp <strong>9560517234</strong>. The clinic is in Ghaziabad and serves patients from across the Delhi NCR — Noida, Indirapuram, Vasundhara, Vaishali, Kaushambi and Meerut. Tele-consultation is available for follow-up cases and patients living away from Ghaziabad.</div>
+      <div class="answer">Call or WhatsApp <strong>9560517234</strong>. The clinic is at <strong>R-12/28, Raj Nagar, Ghaziabad</strong> and serves patients from across the Delhi NCR — Noida, Indirapuram, Vasundhara, Vaishali, Kaushambi and Meerut. Tele-consultation is available for follow-up cases and patients living away from Ghaziabad.</div>
     </details>
     <details>
       <summary>Do both doctors see patients at the same location?</summary>
@@ -1298,11 +1293,22 @@
       </div>
       <div class="contact-row">
         <div class="lbl">Address</div>
-        <div class="val">Navyug Market, Patel Nagar<br/>Ghaziabad, Uttar Pradesh, India</div>
+        <div class="val"><a href="https://maps.app.goo.gl/LJdBACJAj8CA4E3g9" target="_blank" rel="noopener">R-12/28, Raj Nagar<br/>Ghaziabad, UP 201002</a></div>
       </div>
-      <div class="contact-row">
-        <div class="lbl">Hours</div>
-        <div class="val">Monday — Saturday<br/><span style="font-size:15px;color:rgba(245,239,228,.55);">By appointment · 10:00 — 20:00</span></div>
+      <div class="contact-row" style="align-items:start;">
+        <div class="lbl" style="padding-top:4px;">Hours</div>
+        <div class="val" style="font-size:16px;line-height:1.5;">
+          <div style="margin-bottom:14px;">
+            <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,239,228,.45);margin-bottom:5px;">Dr. Ashish Prakash</div>
+            <div>Sun–Sat: 11 AM – 2 PM</div>
+            <div style="font-size:13px;color:rgba(245,239,228,.55);">Mon, Tue, Wed, Fri, Sat: also 6 – 8 PM</div>
+          </div>
+          <div>
+            <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,239,228,.45);margin-bottom:5px;">Dr. Neera Bhan</div>
+            <div>Sun–Sat: 9 AM – 2 PM</div>
+            <div style="font-size:13px;color:rgba(245,239,228,.55);">Mon &amp; Fri: also 6 – 8 PM</div>
+          </div>
+        </div>
       </div>
       <div class="contact-row">
         <div class="lbl">YouTube</div>
@@ -1321,11 +1327,14 @@
     </div>
 
     <div class="map-side">
-      <iframe
-        title="Gynae Pedia clinic location — Ghaziabad"
-        loading="lazy"
-        src="https://www.google.com/maps?q=Navyug+Market+Patel+Nagar+Ghaziabad&output=embed"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <a href="https://maps.app.goo.gl/LJdBACJAj8CA4E3g9" target="_blank" rel="noopener" class="map-open-card">
+        <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="rgba(245,239,228,.5)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <div class="map-open-address">
+          <div>R-12/28, Raj Nagar</div>
+          <div>Ghaziabad, Uttar Pradesh 201002</div>
+        </div>
+        <div class="map-open-cta">Open in Google Maps ↗</div>
+      </a>
     </div>
   </div>
 </section>
