@@ -882,23 +882,88 @@
   }
   footer a:hover { color: var(--terracotta-soft); }
 
-  /* sticky mobile call button */
-  .mobile-call {
+  /* sticky mobile call button — hidden when bottom nav is shown */
+  .mobile-call { display: none; }
+
+  /* ================ MOBILE BOTTOM NAV ================ */
+  .mobile-bottom-nav {
     display: none;
     position: fixed;
-    bottom: 16px; right: 16px;
+    bottom: 0; left: 0; right: 0;
     z-index: 60;
+    background: var(--paper);
+    border-top: 1px solid var(--rule);
+    box-shadow: 0 -4px 24px rgba(0,0,0,.09);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (max-width: 880px) { .mobile-bottom-nav { display: flex; } }
+
+  .mbn-items {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+  }
+  .mbn-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 10px 4px 13px;
+    text-decoration: none;
+    color: var(--ink-soft);
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .02em;
+    transition: color .18s;
+    background: none;
+    border: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .mbn-item svg {
+    width: 21px; height: 21px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke .18s;
+  }
+  .mbn-item:hover, .mbn-item.active { color: var(--forest); }
+
+  /* centre callback tab */
+  .mbn-item.mbn-cb {
+    flex: 1.15;
+    position: relative;
+  }
+  .mbn-cb-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
     background: var(--terracotta);
     color: var(--ivory);
-    padding: 14px 20px;
-    border-radius: 999px;
+    border-radius: 16px;
+    padding: 9px 14px 10px;
+    margin: -6px 4px 0;
+    font-size: 10px;
     font-weight: 600;
-    font-size: 14px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.25);
-    align-items: center;
-    gap: 8px;
+    letter-spacing: .03em;
+    box-shadow: 0 4px 16px rgba(194,80,44,.35);
+    transition: background .18s, transform .18s;
+    min-width: 64px;
   }
-  @media (max-width: 880px) { .mobile-call { display: inline-flex; } }
+  .mbn-cb-inner svg { width: 20px; height: 20px; stroke: var(--ivory); }
+  .mbn-item.mbn-cb:hover .mbn-cb-inner { background: #a8411f; transform: translateY(-1px); }
+
+  /* page bottom padding on mobile so content isn't behind nav */
+  @media (max-width: 880px) {
+    footer { padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px)); }
+  }
 
   /* ================ REVIEWS ================ */
   .reviews-section { background: var(--ivory); }
@@ -1220,6 +1285,7 @@
       <a href="#dr-ashish">Dr. Ashish Prakash</a>
       <a href="#dr-neera">Dr. Neera Bhan</a>
       <a href="#services">Services</a>
+      <a href="#reviews">Reviews</a>
       <a href="#faq">FAQ</a>
       <a href="#visit">Visit</a>
     </div>
@@ -1683,6 +1749,40 @@
   </div>
 </footer>
 
+<!-- ======================= MOBILE BOTTOM NAV ======================= -->
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+  <div class="mbn-items">
+
+    <a href="#top" class="mbn-item" id="mbn-home">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>Home</span>
+    </a>
+
+    <a href="#dr-ashish" class="mbn-item" id="mbn-doctors">
+      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>Doctors</span>
+    </a>
+
+    <button class="mbn-item mbn-cb" id="mbn-callback">
+      <div class="mbn-cb-inner">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 1.18 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+        <span>Callback</span>
+      </div>
+    </button>
+
+    <a href="#reviews" class="mbn-item" id="mbn-reviews">
+      <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" stroke-width="1.7"/></svg>
+      <span>Reviews</span>
+    </a>
+
+    <a href="#visit" class="mbn-item" id="mbn-visit">
+      <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span>Visit</span>
+    </a>
+
+  </div>
+</nav>
+
 <!-- ======================= CALLBACK MODAL ======================= -->
 <div id="callback-modal" class="cb-modal" hidden role="dialog" aria-modal="true" aria-labelledby="cb-title-id">
   <div class="cb-backdrop" id="cb-backdrop"></div>
@@ -1826,6 +1926,33 @@
       window.open(waUrl, '_blank');
     });
   })();
+
+  // =================== MOBILE BOTTOM NAV ===================
+  document.getElementById('mbn-callback').addEventListener('click', function() {
+    if (window.openCallbackModal) window.openCallbackModal();
+  });
+
+  // Active tab tracking
+  const mbnSections = [
+    { el: document.getElementById('top'),       tab: 'mbn-home' },
+    { el: document.getElementById('dr-ashish'), tab: 'mbn-doctors' },
+    { el: document.getElementById('dr-neera'),  tab: 'mbn-doctors' },
+    { el: document.getElementById('services'),  tab: null },
+    { el: document.getElementById('reviews'),   tab: 'mbn-reviews' },
+    { el: document.getElementById('visit'),     tab: 'mbn-visit' },
+  ];
+  function updateMbnActive() {
+    const y = window.scrollY + 120;
+    let active = 'mbn-home';
+    mbnSections.forEach(s => {
+      if (s.el && s.tab && s.el.offsetTop <= y) active = s.tab;
+    });
+    document.querySelectorAll('.mbn-item').forEach(item => {
+      item.classList.toggle('active', item.id === active);
+    });
+  }
+  window.addEventListener('scroll', updateMbnActive, { passive: true });
+  updateMbnActive();
 
   document.getElementById('yr').textContent = new Date().getFullYear();
 
