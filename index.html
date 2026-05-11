@@ -989,6 +989,178 @@
   .reveal { opacity: 0; transform: translateY(16px); transition: opacity .8s ease, transform .8s ease; }
   .reveal.in { opacity: 1; transform: none; }
 
+  /* ================ CALLBACK MODAL ================ */
+  .cb-modal {
+    position: fixed; inset: 0;
+    z-index: 200;
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  .cb-modal[hidden] { display: none; }
+  .cb-backdrop {
+    position: absolute; inset: 0;
+    background: rgba(26,29,26,.75);
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+  }
+  .cb-dialog {
+    position: relative;
+    background: var(--paper);
+    border-radius: 8px;
+    width: 100%; max-width: 460px;
+    padding: clamp(28px, 5vw, 44px);
+    box-shadow: 0 24px 64px rgba(0,0,0,.3);
+    z-index: 1;
+    animation: cb-in .25s ease;
+  }
+  @keyframes cb-in {
+    from { opacity: 0; transform: translateY(14px) scale(.98); }
+    to   { opacity: 1; transform: none; }
+  }
+  .cb-close {
+    position: absolute; top: 14px; right: 16px;
+    background: none; border: none; cursor: pointer;
+    font-size: 28px; color: var(--ink-soft);
+    line-height: 1; padding: 4px 8px;
+    transition: color .2s;
+  }
+  .cb-close:hover { color: var(--terracotta); }
+  .cb-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .25em;
+    color: var(--terracotta);
+    margin-bottom: 10px;
+  }
+  .cb-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(26px, 5vw, 36px);
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .cb-title em { font-style: italic; color: var(--forest); font-weight: 300; }
+  .cb-sub {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 26px;
+    line-height: 1.5;
+  }
+  .cb-form { display: flex; flex-direction: column; gap: 14px; }
+  .cb-field { display: flex; flex-direction: column; gap: 6px; }
+  .cb-field label {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    color: var(--ink-soft);
+  }
+  .cb-field input,
+  .cb-field select {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    background: var(--ivory);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    transition: border-color .2s;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .cb-field input:focus,
+  .cb-field select:focus { border-color: var(--forest); }
+  .cb-field select {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath fill='%233a3d39' d='M6 7L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+  .cb-error {
+    font-size: 12px;
+    color: var(--terracotta);
+    margin-top: 2px;
+    display: none;
+  }
+  .cb-field.has-error input,
+  .cb-field.has-error select { border-color: var(--terracotta); }
+  .cb-field.has-error .cb-error { display: block; }
+  .cb-submit {
+    margin-top: 8px;
+    padding: 16px;
+    background: var(--forest);
+    color: var(--ivory);
+    border: none; border-radius: 4px;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: .02em;
+    transition: background .2s, transform .15s;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .cb-submit:hover:not(:disabled) { background: var(--forest-deep); transform: translateY(-1px); }
+  .cb-submit:disabled { opacity: .6; cursor: not-allowed; }
+  .cb-spinner {
+    width: 16px; height: 16px;
+    border: 2px solid rgba(245,239,228,.3);
+    border-top-color: var(--ivory);
+    border-radius: 50%;
+    animation: spin .7s linear infinite;
+    display: none;
+  }
+  .cb-submit.loading .cb-spinner { display: block; }
+  .cb-submit.loading .cb-submit-label { opacity: .7; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .cb-success {
+    text-align: center;
+    padding: 12px 0 4px;
+    display: none;
+  }
+  .cb-success.visible { display: block; }
+  .cb-success-icon {
+    width: 56px; height: 56px;
+    background: rgba(45,74,62,.12);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 18px;
+  }
+  .cb-success h3 {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .cb-success p {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+    line-height: 1.55;
+  }
+  /* nav callback button */
+  .nav-actions { display: flex; gap: 10px; align-items: center; }
+  .nav-cb {
+    background: var(--forest);
+    color: var(--ivory);
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .02em;
+    transition: background .2s, transform .2s;
+    cursor: pointer;
+    border: none;
+    white-space: nowrap;
+  }
+  .nav-cb:hover { background: var(--forest-deep); transform: translateY(-1px); }
+  @media (max-width: 500px) { .nav-cb { display: none; } }
+
   /* map open card */
   .map-open-card {
     display: flex;
@@ -1051,7 +1223,10 @@
       <a href="#faq">FAQ</a>
       <a href="#visit">Visit</a>
     </div>
-    <a class="nav-cta" href="https://wa.me/919560517234" target="_blank" rel="noopener">WhatsApp Us</a>
+    <div class="nav-actions">
+      <button class="nav-cb" id="nav-cb-btn">Request Callback</button>
+      <a class="nav-cta" href="https://wa.me/919560517234" target="_blank" rel="noopener">WhatsApp Us</a>
+    </div>
   </div>
 </nav>
 
@@ -1478,10 +1653,10 @@
       </div>
 
       <div class="contact-cta">
-        <a class="btn-primary" href="tel:+919560517234">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 15.5c-1.2 0-2.5-.2-3.6-.6-.3-.1-.7 0-1 .2l-2.2 2.2c-2.8-1.5-5.2-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.7.2-1-.4-1.1-.6-2.4-.6-3.6 0-.5-.5-1-1-1H4c-.5 0-1 .5-1 1 0 9.4 7.6 17 17 17 .5 0 1-.5 1-1v-3.5c0-.6-.5-1-1-1z"/></svg>
-          Book now — 9560517234
-        </a>
+        <button class="btn-primary" id="contact-cb-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          Request Callback
+        </button>
         <a class="btn-ghost" href="https://wa.me/919560517234" target="_blank" rel="noopener">
           WhatsApp us
         </a>
@@ -1508,12 +1683,150 @@
   </div>
 </footer>
 
+<!-- ======================= CALLBACK MODAL ======================= -->
+<div id="callback-modal" class="cb-modal" hidden role="dialog" aria-modal="true" aria-labelledby="cb-title-id">
+  <div class="cb-backdrop" id="cb-backdrop"></div>
+  <div class="cb-dialog">
+    <button class="cb-close" id="cb-close-btn" aria-label="Close">×</button>
+    <div class="cb-eyebrow">Gynae Pedia</div>
+    <h2 class="cb-title" id="cb-title-id">Request a <em>callback</em></h2>
+    <p class="cb-sub">Leave your details and our team will call you back shortly.</p>
+
+    <form id="cb-form" class="cb-form" novalidate>
+      <div class="cb-field" id="field-name">
+        <label for="cb-name">Your name</label>
+        <input type="text" id="cb-name" name="name" placeholder="Full name" autocomplete="name" />
+        <span class="cb-error">Please enter your name.</span>
+      </div>
+      <div class="cb-field" id="field-doctor">
+        <label for="cb-doctor">I want to consult</label>
+        <select id="cb-doctor" name="doctor">
+          <option value="" disabled selected>Select a doctor</option>
+          <option value="Dr. Ashish Prakash — Pediatrician / Neonatologist">Dr. Ashish Prakash — Pediatrician / Neonatologist</option>
+          <option value="Dr. Neera Bhan — Gynaecologist / Obstetrician">Dr. Neera Bhan — Gynaecologist / Obstetrician</option>
+          <option value="Not sure / General enquiry">Not sure — General enquiry</option>
+        </select>
+        <span class="cb-error">Please select a doctor.</span>
+      </div>
+      <div class="cb-field" id="field-phone">
+        <label for="cb-phone">Your phone number</label>
+        <input type="tel" id="cb-phone" name="phone" placeholder="+91 98765 43210" autocomplete="tel" />
+        <span class="cb-error">Please enter your phone number.</span>
+      </div>
+      <button type="submit" class="cb-submit" id="cb-submit">
+        <span class="cb-spinner"></span>
+        <span class="cb-submit-label">Send callback request</span>
+      </button>
+    </form>
+
+    <div class="cb-success" id="cb-success">
+      <div class="cb-success-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2d4a3e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3>Request sent!</h3>
+      <p>The clinic team has been notified and will call you back shortly. You can also reach them directly on WhatsApp.</p>
+      <a id="cb-wa-btn" href="#" class="btn-primary" target="_blank" rel="noopener" style="display:inline-flex;text-decoration:none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Also send on WhatsApp
+      </a>
+    </div>
+  </div>
+</div>
+
 <a class="mobile-call" href="tel:+919560517234" aria-label="Call clinic">
   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 15.5c-1.2 0-2.5-.2-3.6-.6-.3-.1-.7 0-1 .2l-2.2 2.2c-2.8-1.5-5.2-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.7.2-1-.4-1.1-.6-2.4-.6-3.6 0-.5-.5-1-1-1H4c-.5 0-1 .5-1 1 0 9.4 7.6 17 17 17 .5 0 1-.5 1-1v-3.5c0-.6-.5-1-1-1z"/></svg>
   Call clinic
 </a>
 
 <script>
+  // =================== CALLBACK MODAL ===================
+  (function () {
+    const WEB3FORMS_KEY = 'PASTE_YOUR_WEB3FORMS_KEY_HERE';
+    const CLINIC_PHONE  = '919560517234';
+
+    const modal   = document.getElementById('callback-modal');
+    const form    = document.getElementById('cb-form');
+    const success = document.getElementById('cb-success');
+    const submitBtn = document.getElementById('cb-submit');
+    const waBtn   = document.getElementById('cb-wa-btn');
+
+    function openModal() {
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => document.getElementById('cb-name').focus(), 50);
+    }
+    function closeModal() {
+      modal.hidden = true;
+      document.body.style.overflow = '';
+      form.reset();
+      form.style.display = '';
+      success.classList.remove('visible');
+      ['field-name','field-doctor','field-phone'].forEach(id =>
+        document.getElementById(id).classList.remove('has-error')
+      );
+    }
+
+    document.getElementById('nav-cb-btn').addEventListener('click', openModal);
+    document.getElementById('contact-cb-btn').addEventListener('click', openModal);
+    document.getElementById('cb-close-btn').addEventListener('click', closeModal);
+    document.getElementById('cb-backdrop').addEventListener('click', closeModal);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const name   = document.getElementById('cb-name').value.trim();
+      const doctor = document.getElementById('cb-doctor').value;
+      const phone  = document.getElementById('cb-phone').value.trim();
+
+      // Validate
+      let valid = true;
+      if (!name)   { document.getElementById('field-name').classList.add('has-error');   valid = false; }
+      else           document.getElementById('field-name').classList.remove('has-error');
+      if (!doctor) { document.getElementById('field-doctor').classList.add('has-error'); valid = false; }
+      else           document.getElementById('field-doctor').classList.remove('has-error');
+      if (!phone)  { document.getElementById('field-phone').classList.add('has-error');  valid = false; }
+      else           document.getElementById('field-phone').classList.remove('has-error');
+      if (!valid) return;
+
+      // Loading state
+      submitBtn.disabled = true;
+      submitBtn.classList.add('loading');
+
+      // Build WhatsApp message
+      const waText = encodeURIComponent(
+        `*New Callback Request — Gynae Pedia*\n\nName: ${name}\nDoctor: ${doctor}\nPhone: ${phone}\n\nPlease call this patient back.`
+      );
+      const waUrl = `https://wa.me/${CLINIC_PHONE}?text=${waText}`;
+      waBtn.href = waUrl;
+
+      // Send email via Web3Forms
+      try {
+        await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            access_key: WEB3FORMS_KEY,
+            subject: `Callback Request — ${name} (${doctor})`,
+            from_name: 'Gynae Pedia Website',
+            message: `New callback request from gynaepedia.co.in\n\nName: ${name}\nDoctor: ${doctor}\nPhone: ${phone}\n\nPlease call this patient back at your earliest convenience.`
+          })
+        });
+      } catch (err) {
+        console.warn('Email send failed:', err);
+      }
+
+      // Show success
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('loading');
+      form.style.display = 'none';
+      success.classList.add('visible');
+
+      // Auto-open WhatsApp
+      window.open(waUrl, '_blank');
+    });
+  })();
+
   document.getElementById('yr').textContent = new Date().getFullYear();
 
   // Reveal-on-scroll
