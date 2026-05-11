@@ -900,6 +900,91 @@
   }
   @media (max-width: 880px) { .mobile-call { display: inline-flex; } }
 
+  /* ================ REVIEWS ================ */
+  .reviews-section { background: var(--ivory); }
+
+  .reviews-doctor-block { margin-bottom: clamp(40px, 6vw, 72px); }
+  .reviews-doctor-block:last-child { margin-bottom: 0; }
+
+  .reviews-doctor-lbl {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .reviews-doctor-lbl::before {
+    content: ""; flex-shrink: 0;
+    width: 28px; height: 1px;
+    background: var(--rule-strong);
+  }
+  .reviews-doctor-lbl span {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .22em;
+    color: var(--ink-soft);
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 900px) { .reviews-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .reviews-grid { grid-template-columns: 1fr; } }
+
+  .review-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: border-color .2s, transform .2s;
+  }
+  .review-card:hover { border-color: var(--forest); transform: translateY(-2px); }
+
+  .review-stars {
+    color: var(--mustard);
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+  .review-text {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--ink);
+    font-style: italic;
+    flex: 1;
+    quotes: none;
+  }
+  .review-text::before { content: "\201C"; font-style: normal; color: var(--terracotta); font-size: 28px; line-height: 0; vertical-align: -10px; margin-right: 3px; }
+  .review-text::after  { content: "\201D"; font-style: normal; color: var(--terracotta); font-size: 28px; line-height: 0; vertical-align: -10px; margin-left: 3px; }
+
+  .review-meta {
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .review-name {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .review-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    color: var(--terracotta);
+  }
+
   /* fade in */
   .reveal { opacity: 0; transform: translateY(16px); transition: opacity .8s ease, transform .8s ease; }
   .reveal.in { opacity: 1; transform: none; }
@@ -1240,10 +1325,86 @@
   </div>
 </section>
 
+<!-- ======================= REVIEWS ======================= -->
+<section class="reviews-section" id="reviews">
+  <div class="section-head">
+    <div class="section-num">04 / What patients say</div>
+    <h2 class="section-title">Words from the families <em>we've cared for.</em></h2>
+  </div>
+
+  <div class="reviews-doctor-block">
+    <div class="reviews-doctor-lbl"><span>Dr. Ashish Prakash — Pediatrician &amp; Neonatologist</span></div>
+    <div class="reviews-grid">
+
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <blockquote class="review-text">My son had blood in his stool. Dr. Ashish's swift action led to a timely diagnosis of intussusception. He ensured surgery within 18 hours, preventing severe complications. His professionalism and care were exceptional.</blockquote>
+        <div class="review-meta">
+          <div class="review-name">Aparna Dubey</div>
+          <div class="review-tag">Emergency care</div>
+        </div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <blockquote class="review-text">One of the top neonatologists of NCR — very knowledgeable, compassionate, and patient. He thoroughly listens, explains each step clearly, and reassures both child and parent. His gentle approach makes children comfortable.</blockquote>
+        <div class="review-meta">
+          <div class="review-name">Anuj Khullar</div>
+          <div class="review-tag">Neonatal care</div>
+        </div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <blockquote class="review-text">What stands out most is his expertise and clear communication — he always provides detailed explanations that put our minds at ease. He patiently answers every question without rushing us, which is invaluable for new parents.</blockquote>
+        <div class="review-meta">
+          <div class="review-name">Prateek Kataria</div>
+          <div class="review-tag">Newborn care</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="reviews-doctor-block">
+    <div class="reviews-doctor-lbl"><span>Dr. Neera Bhan — Gynaecologist &amp; Obstetrician</span></div>
+    <div class="reviews-grid">
+
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <blockquote class="review-text">Despite my two previous open surgeries, she skillfully performed a laparoscopic hysterectomy with minimal invasion and scarring. The surgery was a success and I was back on my feet in no time — a testament to Dr. Neera Bhan's skill.</blockquote>
+        <div class="review-meta">
+          <div class="review-name">Alka</div>
+          <div class="review-tag">Laparoscopic surgery</div>
+        </div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <blockquote class="review-text">She handled all my queries with so much patience and explained every test and scan. She encouraged me for normal delivery and motivated me for natural labour. I delivered my baby girl naturally with no induction and oxytocin.</blockquote>
+        <div class="review-meta">
+          <div class="review-name">Pankhuri Rai</div>
+          <div class="review-tag">Normal delivery</div>
+        </div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <blockquote class="review-text">From the first consultation to delivery and post-natal care, Dr. Neera Bhan's expertise and kindness were evident. Her ability to address every question with patience and clarity made the entire pregnancy journey smooth and stress-free.</blockquote>
+        <div class="review-meta">
+          <div class="review-name">Akshay Siwach</div>
+          <div class="review-tag">Pregnancy &amp; delivery</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ======================= FAQ ======================= -->
 <section id="faq">
   <div class="section-head">
-    <div class="section-num">04 / Frequently asked</div>
+    <div class="section-num">05 / Frequently asked</div>
     <h2 class="section-title">Questions parents and patients <em>actually</em> ask us.</h2>
   </div>
 
