@@ -580,9 +580,11 @@
     font-weight: 500;
     transition: all .2s;
   }
-  .pills span:hover {
-    background: var(--forest);
-    color: var(--ivory);
+  @media (hover: hover) {
+    .pills span:hover {
+      background: var(--forest);
+      color: var(--ivory);
+    }
   }
 
   /* YouTube callout */
@@ -1384,7 +1386,7 @@
     <span>Westmead Hospital, Sydney</span>
     <span>Lady Hardinge Medical College</span>
     <span>Royal Alexandra Hospital for Children</span>
-    <span>Ex Senior Consultants at Fortis Noida</span>
+    <span>Ex-Senior Consultants, Fortis Noida</span>
     <span>30+ Years of Practice</span>
     <span>NICU · Neonatology · Laparoscopic Surgery</span>
     <span>AIIMS New Delhi</span>
@@ -1392,7 +1394,7 @@
     <span>Westmead Hospital, Sydney</span>
     <span>Lady Hardinge Medical College</span>
     <span>Royal Alexandra Hospital for Children</span>
-    <span>Ex Senior Consultants at Fortis Noida</span>
+    <span>Ex-Senior Consultants, Fortis Noida</span>
     <span>30+ Years of Practice</span>
     <span>NICU · Neonatology · Laparoscopic Surgery</span>
   </div>
@@ -1489,7 +1491,7 @@
         <li><span class="y">2019</span><span class="d">Fellow of the Royal College of Obstetricians &amp; Gynaecologists<em>FRCOG — Royal College, London, United Kingdom</em></span></li>
         <li><span class="y">2007 — 2017</span><span class="d">Senior Consultant<em>Fortis Hospital, Noida</em></span></li>
         <li><span class="y">2007</span><span class="d">Membership, Royal College of Obstetricians &amp; Gynaecologists<em>MRCOG — London, United Kingdom</em></span></li>
-        <li><span class="y">France</span><span class="d">Diploma in Advanced Laparoscopic Surgery<em>Endoscopic &amp; Laparoscopic Surgery Training, France</em></span></li>
+        <li><span class="y">—</span><span class="d">Diploma in Advanced Laparoscopic Surgery<em>Endoscopic &amp; Laparoscopic Surgery Training, France</em></span></li>
         <li><span class="y">1997 — 2005</span><span class="d">Professor, Obstetrics &amp; Gynaecology<em>Santosh Hospital, Ghaziabad</em></span></li>
         <li><span class="y">1993 — 1997</span><span class="d">Senior Registrar, Obstetrics &amp; Gynaecology<em>Nepean Hospital, Sydney, Australia</em></span></li>
         <li><span class="y">1992 — 1993</span><span class="d">Senior Resident<em>Mowasat Hospital, Kuwait</em></span></li>
@@ -1740,14 +1742,14 @@
         <div class="lbl" style="padding-top:4px;">Hours</div>
         <div class="val" style="font-size:16px;line-height:1.5;">
           <div style="margin-bottom:14px;">
-            <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,239,228,.45);margin-bottom:5px;">Dr. Ashish Prakash</div>
+            <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,239,228,.65);margin-bottom:5px;">Dr. Ashish Prakash</div>
             <div>Sun–Sat: 11 AM – 2 PM</div>
-            <div style="font-size:13px;color:rgba(245,239,228,.55);">Mon, Tue, Wed, Fri, Sat: also 6 – 8 PM</div>
+            <div style="font-size:13px;color:rgba(245,239,228,.7);">Mon, Tue, Wed, Fri, Sat: also 6 – 8 PM</div>
           </div>
           <div>
-            <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,239,228,.45);margin-bottom:5px;">Dr. Neera Bhan</div>
+            <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,239,228,.65);margin-bottom:5px;">Dr. Neera Bhan</div>
             <div>Sun–Sat: 9 AM – 2 PM</div>
-            <div style="font-size:13px;color:rgba(245,239,228,.55);">Mon &amp; Fri: also 6 – 8 PM</div>
+            <div style="font-size:13px;color:rgba(245,239,228,.7);">Mon &amp; Fri: also 6 – 8 PM</div>
           </div>
         </div>
       </div>
@@ -1809,7 +1811,7 @@
     </button>
 
     <a href="#reviews" class="mbn-item" id="mbn-reviews">
-      <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" stroke-width="1.7"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
       <span>Reviews</span>
     </a>
 
@@ -1822,6 +1824,9 @@
 </nav>
 
 <!-- ======================= CALLBACK MODAL ======================= -->
+<noscript>
+  <style>.nav-cb, #contact-cb-btn, #mbn-callback { display: none !important; }</style>
+</noscript>
 <div id="callback-modal" class="cb-modal" hidden role="dialog" aria-modal="true" aria-labelledby="cb-title-id">
   <div class="cb-backdrop" id="cb-backdrop"></div>
   <div class="cb-dialog">
