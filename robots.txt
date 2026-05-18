@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gynaepedia.co.in/sitemap.xml

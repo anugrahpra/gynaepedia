@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <!-- ============ PRIMARY SEO ============ -->
-<title>Dr. Ashish Prakash & Dr. Neera Bhan | Gynae Pedia — Pediatrician & Gynaecologist in Ghaziabad</title>
+<title>Gynae Pedia — Pediatrician & Gynaecologist in Ghaziabad | Dr. Ashish Prakash & Dr. Neera Bhan</title>
 <meta name="description" content="Gynae Pedia, Ghaziabad. Dr. Ashish Prakash (AIIMS) — leading pediatrician & neonatologist. Dr. Neera Bhan (FRCOG London) — gynaecologist, obstetrician & laparoscopic surgeon. 30+ years' experience each. Book an appointment: 9560517234." />
 <meta name="keywords" content="Dr Ashish Prakash, Dr Neera Bhan, pediatrician Ghaziabad, neonatologist Ghaziabad, gynaecologist Ghaziabad, gynecologist Ghaziabad, laparoscopic surgery gynae, endoscopic surgery gynae, childbirth Ghaziabad, painless delivery, vaccinations children, baby vaccinations, menopause treatment, PCOS Ghaziabad, hysteroscopy, AIIMS pediatrician, FRCOG London, Gynae Pedia, child specialist Ghaziabad, women's health Ghaziabad, high risk pregnancy" />
 <meta name="author" content="Gynae Pedia — Dr. Ashish Prakash & Dr. Neera Bhan" />
@@ -31,13 +31,16 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "MedicalClinic",
+  "@type": ["MedicalClinic", "LocalBusiness"],
   "name": "Gynae Pedia",
   "alternateName": "Dr. Ashish Prakash & Dr. Neera Bhan Clinic",
+  "description": "Gynae Pedia, Ghaziabad — Dr. Ashish Prakash (AIIMS) leading pediatrician & neonatologist, and Dr. Neera Bhan (FRCOG London) gynaecologist, obstetrician & laparoscopic surgeon. 30+ years experience each.",
   "url": "https://gynaepedia.co.in/",
   "telephone": "+91-9560517234",
   "image": "https://gynaepedia.co.in/og.jpg",
-  "priceRange": "₹₹",
+  "priceRange": "₹700–₹800",
+  "currenciesAccepted": "INR",
+  "paymentAccepted": "Cash, UPI",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "R-12/28, Raj Nagar",
@@ -46,28 +49,39 @@
     "postalCode": "201002",
     "addressCountry": "IN"
   },
-  "areaServed": ["Ghaziabad", "Noida", "Delhi NCR", "Meerut"],
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "28.6469",
+    "longitude": "77.4196"
+  },
+  "areaServed": ["Ghaziabad", "Noida", "Indirapuram", "Vasundhara", "Vaishali", "Kaushambi", "Delhi NCR", "Meerut"],
   "medicalSpecialty": ["Pediatrics", "Neonatology", "Gynecology", "Obstetrics", "LaparoscopicSurgery"],
+  "hasMap": "https://maps.app.goo.gl/LJdBACJAj8CA4E3g9",
+  "sameAs": ["https://www.youtube.com/@neerabhan"],
   "physician": [
     {
       "@type": "Physician",
       "name": "Dr. Ashish Prakash",
+      "jobTitle": "Senior Consultant & Head of Neonatology",
+      "description": "AIIMS-trained pediatrician and neonatologist with 30+ years of experience. Set up the first Level III Neonatal Unit in western Uttar Pradesh.",
       "medicalSpecialty": ["Pediatrics", "Neonatology"],
-      "alumniOf": [
-        {"@type": "CollegeOrUniversity", "name": "All India Institute of Medical Sciences (AIIMS), New Delhi"},
-        {"@type": "Hospital", "name": "Westmead Hospital, Sydney"},
-        {"@type": "Hospital", "name": "Royal Alexandra Hospital for Children, Sydney"}
+      "hasCredential": [
+        {"@type": "EducationalOccupationalCredential", "credentialCategory": "degree", "name": "MBBS, MD Pediatrics", "recognizedBy": {"@type": "CollegeOrUniversity", "name": "AIIMS New Delhi"}},
+        {"@type": "EducationalOccupationalCredential", "credentialCategory": "degree", "name": "DNB Paediatrics", "recognizedBy": {"@type": "Organization", "name": "National Board of Examinations, India"}}
       ],
-      "memberOf": {"@type": "Organization", "name": "Yashoda Super Speciality Hospitals — Head of Neonatology"}
+      "worksFor": {"@type": "Hospital", "name": "Yashoda Super Speciality Hospitals, Ghaziabad"}
     },
     {
       "@type": "Physician",
       "name": "Dr. Neera Bhan",
+      "jobTitle": "Senior Consultant — Obstetrics & Gynaecology",
+      "description": "FRCOG London gynaecologist and laparoscopic surgeon with 30+ years of international practice. Expert in laparoscopic surgery, high-risk pregnancy and menopause care.",
       "medicalSpecialty": ["Gynecology", "Obstetrics", "LaparoscopicSurgery"],
-      "alumniOf": [
-        {"@type": "CollegeOrUniversity", "name": "Lady Hardinge Medical College, New Delhi"},
-        {"@type": "Organization", "name": "Royal College of Obstetricians and Gynaecologists, London (FRCOG)"}
-      ]
+      "hasCredential": [
+        {"@type": "EducationalOccupationalCredential", "credentialCategory": "degree", "name": "MBBS, MD Obstetrics & Gynaecology", "recognizedBy": {"@type": "CollegeOrUniversity", "name": "Lady Hardinge Medical College, University of Delhi"}},
+        {"@type": "EducationalOccupationalCredential", "credentialCategory": "fellowship", "name": "FRCOG — Fellow of the Royal College of Obstetricians and Gynaecologists", "recognizedBy": {"@type": "Organization", "name": "Royal College of Obstetricians and Gynaecologists, London"}}
+      ],
+      "sameAs": ["https://www.youtube.com/@neerabhan"]
     }
   ],
   "openingHoursSpecification": [
@@ -479,6 +493,22 @@
     color: var(--terracotta);
     margin-bottom: 24px;
   }
+  .consult-fee {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--forest);
+    background: rgba(45,74,62,.08);
+    border: 1px solid rgba(45,74,62,.2);
+    border-radius: 999px;
+    padding: 5px 14px;
+    margin-bottom: 20px;
+    letter-spacing: .01em;
+  }
+  .consult-fee strong { font-weight: 600; color: var(--forest); }
+
   .doctor-body p {
     font-size: 16.5px;
     line-height: 1.7;
@@ -1336,7 +1366,7 @@
       <div class="meta-item">
         <div class="label">Location</div>
         <div class="value">Ghaziabad</div>
-        <div class="sub">Navyug Market, Patel Nagar · Delhi NCR</div>
+        <div class="sub">R-12/28, Raj Nagar · Ghaziabad</div>
       </div>
     </div>
   </div>
@@ -1379,6 +1409,7 @@
     <div class="doctor-body">
       <div class="role">MBBS · MD Pediatrics · DNB · AIIMS</div>
       <h3>Dr. Ashish Prakash</h3>
+      <div class="consult-fee">Consultation fee: <strong>₹700</strong></div>
       <p>
         A <strong>pediatrician and neonatologist</strong> with over <strong>30 years of practice</strong>, Dr. Ashish Prakash is among the most-respected child specialists in Ghaziabad and the Delhi NCR. He completed his MBBS and MD from <strong>AIIMS, New Delhi</strong>. Before his Australian fellowship, he served as <strong>Senior Resident at Mowasat Hospital, Kuwait</strong> (1992–93), then trained in advanced neonatology at the <strong>Children's Hospital at Westmead</strong> and <strong>Royal Alexandra Hospital for Children</strong> in Sydney (1993–97).
       </p>
@@ -1430,12 +1461,13 @@
 
   <article class="doctor reveal">
     <div class="doctor-portrait">
-      <img src="dr-neera.png" alt="Dr. Neera Bhan — Gynaecologist, Obstetrician &amp; Laparoscopic Surgeon, Ghaziabad" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" />
+      <img src="dr-neera.png" alt="Dr. Neera Bhan — Gynaecologist, Obstetrician &amp; Laparoscopic Surgeon, Ghaziabad" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" />
     </div>
 
     <div class="doctor-body">
       <div class="role">MBBS · MD · FRCOG (London)</div>
       <h3>Dr. Neera Bhan</h3>
+      <div class="consult-fee">Consultation fee: <strong>₹800</strong></div>
       <p>
         Dr. Neera Bhan is a senior <strong>gynaecologist, obstetrician and laparoscopic surgeon</strong> with three decades of practice across <strong>Kuwait, Australia, the United Kingdom and India</strong>. She completed her MBBS and MD in Obstetrics &amp; Gynaecology from <strong>Lady Hardinge Medical College, New Delhi</strong>. She received her <strong>MRCOG</strong> from the Royal College of Obstetricians and Gynaecologists, London in 2007, and her <strong>Fellowship (FRCOG)</strong> in 2019.
       </p>
@@ -1763,7 +1795,7 @@
       <span>Doctors</span>
     </a>
 
-    <button class="mbn-item mbn-cb" id="mbn-callback">
+    <button type="button" class="mbn-item mbn-cb" id="mbn-callback">
       <div class="mbn-cb-inner">
         <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 1.18 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
         <span>Callback</span>
@@ -1868,6 +1900,7 @@
 
     document.getElementById('nav-cb-btn').addEventListener('click', openModal);
     document.getElementById('contact-cb-btn').addEventListener('click', openModal);
+    document.getElementById('mbn-callback').addEventListener('click', openModal);
     document.getElementById('cb-close-btn').addEventListener('click', closeModal);
     document.getElementById('cb-backdrop').addEventListener('click', closeModal);
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
@@ -1928,9 +1961,6 @@
   })();
 
   // =================== MOBILE BOTTOM NAV ===================
-  document.getElementById('mbn-callback').addEventListener('click', function() {
-    if (window.openCallbackModal) window.openCallbackModal();
-  });
 
   // Active tab tracking
   const mbnSections = [
