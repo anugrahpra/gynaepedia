@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#f5efe4" />
+<link rel="icon" type="image/jpeg" href="/gynaepedia-icon.jpg" />
+
+<title>Assessments — Gynae Pedia</title>
+<meta name="description" content="Screening tools offered by Gynae Pedia, Ghaziabad." />
+<meta name="robots" content="noindex, nofollow" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter+Tight:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --ivory:        #f5efe4;
+    --ivory-deep:   #ece4d3;
+    --paper:        #faf6ee;
+    --ink:          #1a1d1a;
+    --ink-soft:     #3a3d39;
+    --forest:       #2d4a3e;
+    --forest-deep:  #1f3329;
+    --terracotta:   #c2502c;
+    --terracotta-soft: #e08966;
+    --mustard:      #c89c3e;
+    --rule:         #d8cdb6;
+    --rule-strong:  #2d4a3e;
+    --serif: 'Fraunces', 'Times New Roman', serif;
+    --sans:  'Inter Tight', -apple-system, sans-serif;
+    --mono:  'DM Mono', monospace;
+    --maxw: 1280px;
+    --gutter: clamp(20px, 4vw, 56px);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--ivory);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: .35;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0.07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    mix-blend-mode: multiply;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  /* NAV */
+  .nav { position: sticky; top: 0; z-index: 50; background: rgba(245,239,228,0.88); backdrop-filter: saturate(140%) blur(10px); border-bottom: 1px solid var(--rule); }
+  .nav-inner { max-width: var(--maxw); margin: 0 auto; padding: 14px var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-weight: 600; font-size: 22px; letter-spacing: -.01em; }
+  .nav-links { display: flex; gap: 28px; font-size: 14px; font-weight: 500; }
+  .nav-links a { position: relative; padding: 4px 0; color: var(--ink-soft); transition: color .2s; }
+  .nav-links a:hover { color: var(--terracotta); }
+  .nav-links a.active { color: var(--forest); }
+  .nav-links a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: var(--terracotta); transition: width .25s ease; }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta { background: var(--ink); color: var(--ivory); padding: 10px 18px; border-radius: 999px; font-size: 13px; font-weight: 500; letter-spacing: .02em; transition: background .2s, transform .2s; display: inline-flex; align-items: center; gap: 8px; }
+  .nav-cta:hover { background: var(--terracotta); transform: translateY(-1px); }
+  .nav-cta::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #6ee07a; box-shadow: 0 0 0 3px rgba(110,224,122,.25); }
+  @media (max-width: 880px) { .nav-links { display: none; } }
+
+  /* BREADCRUMB */
+  .breadcrumb { max-width: var(--maxw); margin: 0 auto; padding: 14px var(--gutter) 0; font-family: var(--mono); font-size: 12px; color: var(--ink-soft); letter-spacing: .05em; display: flex; align-items: center; gap: 8px; position: relative; z-index: 2; }
+  .breadcrumb a { color: var(--forest); }
+  .breadcrumb a:hover { color: var(--terracotta); }
+  .breadcrumb .sep { color: var(--rule-strong); opacity: .5; }
+
+  /* PAGE HERO */
+  .page-hero { max-width: var(--maxw); margin: 0 auto; padding: clamp(40px, 6vw, 80px) var(--gutter) clamp(28px, 4vw, 48px); position: relative; z-index: 2; }
+  .eyebrow { font-family: var(--mono); font-size: 12px; color: var(--forest); text-transform: uppercase; letter-spacing: .25em; display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+  .eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--forest); }
+  .page-hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(44px, 7vw, 96px); line-height: .95; letter-spacing: -.03em; color: var(--ink); margin-bottom: 16px; }
+  .page-hero h1 em { font-style: italic; color: var(--forest); font-weight: 300; }
+  .page-hero .lede { font-size: clamp(17px, 1.6vw, 20px); color: var(--ink-soft); max-width: 720px; line-height: 1.55; margin-top: 16px; }
+
+  /* GRID */
+  .grid-wrap { max-width: var(--maxw); margin: 0 auto; padding: clamp(24px, 4vw, 56px) var(--gutter) clamp(56px, 8vw, 96px); position: relative; z-index: 2; }
+  .a-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+  .a-card { background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; padding: 32px; display: flex; flex-direction: column; min-height: 320px; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+  .a-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(45,74,62,.08); border-color: var(--forest); }
+  .a-card .a-tag { font-family: var(--mono); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 16px; }
+  .a-card h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(26px, 3vw, 32px); line-height: 1.1; letter-spacing: -.015em; color: var(--ink); margin-bottom: 8px; }
+  .a-card .a-age { font-family: var(--mono); font-size: 12px; color: var(--forest); letter-spacing: .08em; margin-bottom: 16px; }
+  .a-card p { font-size: 15.5px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 20px; }
+  .a-card .a-meta { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 24px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .a-card .a-meta span::before { content: "·"; margin-right: 14px; opacity: .4; }
+  .a-card .a-meta span:first-child::before { display: none; margin: 0; }
+  .a-card .a-cta { margin-top: auto; align-self: flex-start; background: var(--forest); color: var(--ivory); padding: 12px 22px; border-radius: 999px; font-size: 13.5px; font-weight: 500; letter-spacing: .02em; display: inline-flex; align-items: center; gap: 8px; transition: background .2s, transform .2s; }
+  .a-card .a-cta:hover { background: var(--terracotta); transform: translateX(2px); }
+  .a-card.coming-soon { opacity: .55; }
+  .a-card.coming-soon .a-cta { background: transparent; color: var(--ink-soft); border: 1px dashed var(--rule-strong); pointer-events: none; }
+
+  /* INTRO BLOCK */
+  .intro-block { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 28px 0; margin-bottom: 40px; display: grid; grid-template-columns: 1fr 2fr; gap: clamp(20px, 4vw, 56px); }
+  @media (max-width: 760px) { .intro-block { grid-template-columns: 1fr; gap: 12px; } }
+  .intro-block .lbl { font-family: var(--mono); font-size: 12px; color: var(--terracotta); text-transform: uppercase; letter-spacing: .25em; }
+  .intro-block p { font-size: 16px; color: var(--ink-soft); line-height: 1.7; }
+
+  /* FOOTER */
+  footer { background: var(--forest-deep); color: rgba(245,239,228,.55); padding: 32px var(--gutter); position: relative; z-index: 2; }
+  .f-inner { max-width: var(--maxw); margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; }
+  @media (max-width: 760px) { footer { padding-bottom: 90px; } }
+  @media (min-width: 760px) { .mobile-call { display: none !important; } }
+</style>
+</head>
+<body>
+
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a class="brand" href="/" aria-label="Gynae Pedia home">
+      <img src="gynaepedia-icon.jpg" alt="Gynae Pedia" style="height:30px;width:auto;" />
+    </a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/#dr-ashish">Dr. Ashish Prakash</a>
+      <a href="/#dr-neera">Dr. Neera Bhan</a>
+      <a href="/#services">Services</a>
+      <a href="/#reviews">Reviews</a>
+      <a href="/assessments" class="active">Assessments</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/#visit">Visit</a>
+    </div>
+    <div class="nav-actions">
+      <a href="https://wa.me/919560517234" class="nav-cta" target="_blank" rel="noopener">WhatsApp Us</a>
+    </div>
+  </div>
+</nav>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Home</a>
+  <span class="sep">›</span>
+  <span>Assessments</span>
+</nav>
+
+<div class="page-hero">
+  <div class="eyebrow">GYNAE PEDIA · SCREENING TOOLS</div>
+  <h1>Quick <em>screenings</em><br>for parents.</h1>
+  <p class="lede">Validated screening tools you can complete at home in a few minutes. Your responses are sent to the clinic and reviewed by your doctor at your next consultation.</p>
+</div>
+
+<div class="grid-wrap">
+  <div class="intro-block">
+    <div class="lbl">Important</div>
+    <p>These tools are <strong>screening instruments only</strong>, not diagnoses. After you submit, Dr. Ashish Prakash receives your responses and will discuss them with you in person. If you have concerns sooner, call or WhatsApp <a href="tel:+919560517234" style="color:var(--forest);border-bottom:1px solid var(--forest);">+91 9560517234</a>.</p>
+  </div>
+
+  <div class="a-grid">
+
+    <a class="a-card" href="/mchat-r" aria-label="Start M-CHAT-R autism screening">
+      <div class="a-tag">Paediatrics</div>
+      <h2>M-CHAT-R&trade; Autism Screening</h2>
+      <div class="a-age">For children aged 16 – 30 months</div>
+      <p>A 20-question parent checklist for early identification of autism spectrum traits in toddlers. Used by paediatricians worldwide as a first-line screen.</p>
+      <div class="a-meta">
+        <span>~5 minutes</span>
+        <span>20 yes/no questions</span>
+        <span>English</span>
+      </div>
+      <span class="a-cta">Start screening &rarr;</span>
+    </a>
+
+  </div>
+</div>
+
+<footer>
+  <div class="f-inner">
+    <div>&copy; <span id="yr"></span> Gynae Pedia &middot; Dr. Ashish Prakash &amp; Dr. Neera Bhan, Ghaziabad</div>
+    <div>Pediatrician &middot; Neonatologist &middot; Gynaecologist &middot; Obstetrician &middot; Laparoscopic Surgeon</div>
+  </div>
+</footer>
+
+<a class="mobile-call" href="tel:+919560517234" aria-label="Call clinic" style="position:fixed;bottom:24px;right:20px;z-index:100;background:var(--forest);color:var(--ivory);padding:12px 20px;border-radius:999px;font-family:var(--sans);font-size:13px;font-weight:500;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(0,0,0,.18);text-decoration:none;">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 15.5c-1.2 0-2.5-.2-3.6-.6-.3-.1-.7 0-1 .2l-2.2 2.2c-2.8-1.5-5.2-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.7.2-1-.4-1.1-.6-2.4-.6-3.6 0-.5-.5-1-1-1H4c-.5 0-1 .5-1 1 0 9.4 7.6 17 17 17 .5 0 1-.5 1-1v-3.5c0-.6-.5-1-1-1z"/></svg>
+  Call clinic
+</a>
+
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+
+</body>
+</html>
