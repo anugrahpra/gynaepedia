@@ -16,7 +16,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter+Tight:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
-<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 
 <style>
   :root {
@@ -119,10 +118,10 @@
   .q-options input[type="radio"]:focus-visible + label { outline: 2px solid var(--terracotta); outline-offset: 2px; }
 
   /* ANTI-SPAM + SUBMIT */
-  .captcha-wrap { margin: 24px 0; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-  .captcha-wrap .h-captcha { min-height: 78px; }
-  .captcha-error { display: none; font-family: var(--mono); font-size: 11px; color: var(--terracotta); letter-spacing: .05em; }
-  .captcha-wrap.has-error .captcha-error { display: block; }
+  .robot-check { display: flex; align-items: center; gap: 12px; padding: 16px 20px; background: var(--ivory); border: 1.5px solid var(--rule); border-radius: 10px; margin: 24px 0; cursor: pointer; }
+  .robot-check input { width: 20px; height: 20px; cursor: pointer; accent-color: var(--forest); }
+  .robot-check label { font-size: 15px; cursor: pointer; user-select: none; }
+  .robot-check.has-error { border-color: var(--terracotta); }
   .honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 
   .submit-btn { width: 100%; padding: 16px 28px; background: var(--forest); color: var(--ivory); border: none; border-radius: 999px; font-family: var(--sans); font-size: 15px; font-weight: 500; letter-spacing: .02em; cursor: pointer; transition: background .2s, transform .2s; display: inline-flex; align-items: center; justify-content: center; gap: 10px; }
@@ -289,9 +288,9 @@
       <div class="form-card">
         <div class="form-error-banner" id="form-error">Please complete all required fields and all 20 questions before submitting.</div>
 
-        <div class="captcha-wrap" id="captcha-wrap">
-          <div class="h-captcha" data-sitekey="85b66296-963e-446c-8838-933e7e60da46" data-callback="onHcaptchaSuccess" data-expired-callback="onHcaptchaExpired"></div>
-          <span class="captcha-error">Please complete the verification before submitting.</span>
+        <div class="robot-check" id="robot-check">
+          <input type="checkbox" id="not-robot" name="not-robot" />
+          <label for="not-robot">I'm a parent or caregiver, not a robot.</label>
         </div>
 
         <!-- Honeypot -->
@@ -733,14 +732,9 @@
   const confirmationView = document.getElementById('confirmation-view');
   const formError = document.getElementById('form-error');
 
-  // hCaptcha state
-  let captchaToken = null;
-  window.onHcaptchaSuccess = function(token) { captchaToken = token; document.getElementById('captcha-wrap').classList.remove('has-error'); };
-  window.onHcaptchaExpired = function() { captchaToken = null; };
-
   function clearErrors() {
     document.querySelectorAll('.field.has-error').forEach(f => f.classList.remove('has-error'));
-    document.getElementById('captcha-wrap').classList.remove('has-error');
+    document.getElementById('robot-check').classList.remove('has-error');
     formError.classList.remove('active');
   }
 
@@ -768,12 +762,9 @@
       if (!document.querySelector(`input[name="q${q.n}"]:checked`)) unanswered.push(q.n);
     });
 
-    // hCaptcha check (read directly from widget if callback hasn't fired yet)
-    if (!captchaToken && window.hcaptcha) {
-      try { captchaToken = window.hcaptcha.getResponse() || null; } catch (e) { captchaToken = null; }
-    }
-    if (!captchaToken) {
-      document.getElementById('captcha-wrap').classList.add('has-error');
+    // Robot check
+    if (!document.getElementById('not-robot').checked) {
+      document.getElementById('robot-check').classList.add('has-error');
       valid = false;
     }
 
@@ -784,10 +775,8 @@
         const firstUnanswered = document.getElementById('q' + unanswered[0]);
         firstUnanswered.classList.add('fail-flag');
         setTimeout(() => firstUnanswered.classList.remove('fail-flag'), 2500);
-      } else if (!captchaToken) {
-        formError.textContent = 'Please complete the hCaptcha verification before submitting.';
       } else {
-        formError.textContent = 'Please complete all required fields before submitting.';
+        formError.textContent = 'Please complete all required fields and tick the "I am not a robot" checkbox before submitting.';
       }
       return false;
     }
@@ -848,7 +837,6 @@
     fd.append('subject', subject);
     fd.append('from_name', 'Gynae Pedia — M-CHAT-R Screening');
     fd.append('message', emailBody);
-    if (captchaToken) fd.append('h-captcha-response', captchaToken);
     if (pdfBlob) {
       const pdfName = `mchat-r-${data.childName.toLowerCase().replace(/[^a-z0-9]/g, '-')}-${new Date().toISOString().slice(0,10)}.pdf`;
       fd.append('attachment', pdfBlob, pdfName);
