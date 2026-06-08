@@ -829,29 +829,16 @@
     };
     const score = computeScore(answers);
 
-    // Build PDF
-    let pdfBlob;
-    try {
-      const doc = buildPDF(data, score);
-      pdfBlob = doc.output('blob');
-    } catch (err) {
-      console.warn('PDF generation failed:', err);
-    }
-
     // Build email body
     const emailBody = buildEmailBody(data, score);
     const subject = `M-CHAT-R Screening — ${data.childName} — ${score.riskLevel} RISK — Score ${score.totalFails}/20`;
 
-    // Submit via Web3Forms
+    // Submit via Web3Forms (free tier: no file attachments)
     const fd = new FormData();
     fd.append('access_key', WEB3FORMS_KEY);
     fd.append('subject', subject);
     fd.append('from_name', 'Gynae Pedia — M-CHAT-R Screening');
     fd.append('message', emailBody);
-    if (pdfBlob) {
-      const pdfName = `mchat-r-${data.childName.toLowerCase().replace(/[^a-z0-9]/g, '-')}-${new Date().toISOString().slice(0,10)}.pdf`;
-      fd.append('attachment', pdfBlob, pdfName);
-    }
 
     let submissionOK = false;
     let submissionDetail = '';
