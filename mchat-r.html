@@ -853,16 +853,33 @@
       fd.append('attachment', pdfBlob, pdfName);
     }
 
+    let submissionOK = false;
+    let submissionDetail = '';
     try {
-      await fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd });
+      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd });
+      const json = await res.json().catch(() => ({}));
+      console.log('Web3Forms response:', res.status, json);
+      if (res.ok && json.success) {
+        submissionOK = true;
+      } else {
+        submissionDetail = (json && json.message) ? json.message : ('HTTP ' + res.status);
+      }
     } catch (err) {
-      console.warn('Submission failed:', err);
-      // Still show confirmation — the parent shouldn't see backend errors
+      console.warn('Submission failed (network):', err);
+      submissionDetail = err.message || 'Network error';
+    }
+
+    submitBtn.disabled = false;
+    submitBtn.classList.remove('loading');
+
+    if (!submissionOK) {
+      formError.textContent = 'We could not send your screening to the clinic. Please call +91 9560517234. (' + submissionDetail + ')';
+      formError.classList.add('active');
+      formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
     }
 
     // Show confirmation
-    submitBtn.disabled = false;
-    submitBtn.classList.remove('loading');
     screenerView.style.display = 'none';
     confirmationView.classList.add('visible');
     window.scrollTo({ top: 0, behavior: 'smooth' });
